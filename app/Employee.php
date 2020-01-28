@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    //
+    protected $table = 'employees';
+    protected $fillable= ['name', 'lastname'];
+
+    public function tasks(){
+        return $this-> belongsToMany(Task::class);
+    }
 }

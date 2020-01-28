@@ -15,7 +15,6 @@ class CreateEmployeeTaskTable extends Migration
     {
         Schema::create('employee_task', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
         });
     }
 
