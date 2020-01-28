@@ -10,7 +10,7 @@
       {{ $emp-> name }} 
       {{ $emp -> lastname }} : 
       (<a href=" {{ route('emp.delete', $emp -> id) }} ">LICENZIA</a>)
-      ( <a href="">MODIFICA</a> )
+      ( <a href="{{ route('emp.edit', $emp -> id) }}">MODIFICA</a> )
       <ul>
         <br>
         @foreach ($emp -> tasks as $task)

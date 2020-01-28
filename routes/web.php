@@ -8,3 +8,7 @@ Route::get('/create', 'MainController@createNewEmp')-> name('emp.create');
 Route::post('/store' , 'MainController@storeNewEmp') -> name('emp.store');
 
 Route::get('/destroy/{id}', 'MainController@destroyEmp') -> name('emp.delete');
+
+Route::get('/edit/{id}' , 'MainController@editEmp')-> name('emp.edit');
+
+Route::post('/update/{id}', 'MainController@updateEmp')-> name('emp.update');

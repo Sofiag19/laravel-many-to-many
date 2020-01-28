@@ -60,9 +60,10 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editEmp($id)
     {
-        //
+        $emp = Employee::findOrFail($id);
+        return view('pages.empEdit' , compact('emp'));
     }
 
     /**
@@ -72,9 +73,12 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateEmp(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $upEmp= Employee::findOrFail($id);
+        $upEmp -> update($data);
+        return redirect()-> route('emp.index');
     }
 
     /**
