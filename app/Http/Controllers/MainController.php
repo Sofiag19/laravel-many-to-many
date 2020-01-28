@@ -27,7 +27,8 @@ class MainController extends Controller
      */
     public function createNewEmp()
     {
-        return view('pages.empStore');
+        $tasks = Task::all();
+        return view('pages.empStore', compact('tasks'));
     }
 
     /**
@@ -39,7 +40,14 @@ class MainController extends Controller
     public function storeNewEmp(Request $request)
     {
         $data = $request->all();
+        //dd($data);
         $newEmp = Employee::create($data);
+
+        $tasks = Task::find($data['tasks']);
+        //dd($tasks);
+        $newEmp->tasks()->attach($tasks);
+        //dd($newEmp);
+
         return redirect() -> route('emp.index');
     }
 
@@ -83,7 +91,7 @@ class MainController extends Controller
         $upEmp -> update($data);
 
         $tasks = Task::find($data['tasks']);
-        $upEmp -> tasks() -> attach($tasks);
+        $upEmp -> tasks() -> sync($tasks);
 
         return redirect()-> route('emp.index');
     }

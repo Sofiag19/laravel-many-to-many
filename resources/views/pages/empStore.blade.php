@@ -12,6 +12,15 @@
   <label for="">LASTNAME</label>
   <input type="text" name="lastname" placeholder="add lastname">
   
+  <br>
+
+  @foreach ($tasks as $task)
+      <input type="checkbox" name="tasks[]" value=" {{ $task -> id }} " > 
+      {{ $task -> title }} 
+      <br> 
+
+  @endforeach
+
   <button type="submit">CREATE</button>
 </form>
     

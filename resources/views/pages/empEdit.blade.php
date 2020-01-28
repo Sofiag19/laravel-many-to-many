@@ -13,12 +13,17 @@
   <input type="text" name="lastname" value=" {{ $emp -> lastname }} ">
 
   <br>
+
   @foreach ($tasks as $task)
+      <input type="checkbox" name="tasks[]" value=" {{ $task -> id }} " 
+      
       @if ($emp -> tasks() -> find($task -> id))
-      <input type="checkbox" name="tasks[]" checked> {{ $task -> title }} <br> 
-      @else          
-      <input type="checkbox" name="tasks[]"> {{ $task -> title }} <br>
-      @endif
+        checked
+      @endif      
+      > 
+      {{ $task -> title }} 
+      <br> 
+
   @endforeach
   
   <button type="submit">EDIT</button>
