@@ -12,3 +12,5 @@ Route::get('/destroy/{id}', 'MainController@destroyEmp') -> name('emp.delete');
 Route::get('/edit/{id}' , 'MainController@editEmp')-> name('emp.edit');
 
 Route::post('/update/{id}', 'MainController@updateEmp')-> name('emp.update');
+
+Route::get('/destroy/{ide}/destroy/{idt}' , 'MainController@destroyBond')-> name('emp.task.destroy');

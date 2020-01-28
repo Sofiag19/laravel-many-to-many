@@ -16,7 +16,7 @@
         @foreach ($emp -> tasks as $task)
             <li>
               {{ $task -> title }} 
-              ( <a href="">ELIMINA</a> )
+              ( <a href=" {{ route('emp.task.destroy', [$emp -> id, $task ->id] ) }} ">ELIMINA</a> )
               ( <a href="">MODIFICA</a> )
             </li>
             <br>

@@ -94,4 +94,13 @@ class MainController extends Controller
         $emp -> delete();
         return redirect() -> route('emp.index');
     }
+
+    public function destroyBond($ide , $idt)
+    {
+        $emp = Employee::findOrFail($ide);
+        $task = Task::findOrFail($idt);
+
+        $emp -> tasks() -> detach($task);
+        return redirect()-> route('emp.index');
+    }
 }
