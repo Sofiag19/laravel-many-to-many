@@ -38,7 +38,7 @@ class MainController extends Controller
      */
     public function storeNewEmp(Request $request)
     {
-        $data = $request -> validate();
+        $data = $request->all();
         $newEmp = Employee::create($data);
         return redirect() -> route('emp.index');
     }
@@ -83,8 +83,11 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyEmp($id)
     {
-        //
+        $emp = Employee::findOrFail($id);
+        $emp -> tasks() -> sync([]);
+        $emp -> delete();
+        return redirect() -> route('emp.index');
     }
 }

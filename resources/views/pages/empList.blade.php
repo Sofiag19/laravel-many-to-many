@@ -9,7 +9,7 @@
     <li> 
       {{ $emp-> name }} 
       {{ $emp -> lastname }} : 
-      (<a href="">LICENZIA</a>)
+      (<a href=" {{ route('emp.delete', $emp -> id) }} ">LICENZIA</a>)
       ( <a href="">MODIFICA</a> )
       <ul>
         <br>

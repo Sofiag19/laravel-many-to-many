@@ -12,8 +12,7 @@
   <label for="">LASTNAME</label>
   <input type="text" name="lastname" placeholder="add lastname">
   
-  <input type="button" value="CREATE">
-
+  <button type="submit">CREATE</button>
 </form>
     
 @endsection
