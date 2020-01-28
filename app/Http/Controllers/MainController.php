@@ -64,7 +64,8 @@ class MainController extends Controller
     public function editEmp($id)
     {
         $emp = Employee::findOrFail($id);
-        return view('pages.empEdit' , compact('emp'));
+        $tasks = Task::all();
+        return view('pages.empEdit' , compact('emp', 'tasks'));
     }
 
     /**
@@ -77,8 +78,13 @@ class MainController extends Controller
     public function updateEmp(Request $request, $id)
     {
         $data = $request->all();
+        
         $upEmp= Employee::findOrFail($id);
         $upEmp -> update($data);
+
+        $tasks = Task::find($data['tasks']);
+        $upEmp -> tasks() -> attach($tasks);
+
         return redirect()-> route('emp.index');
     }
 
