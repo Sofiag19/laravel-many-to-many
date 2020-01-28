@@ -25,9 +25,9 @@ class MainController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createNewEmp()
     {
-        //
+        return view('pages.empStore');
     }
 
     /**
@@ -36,9 +36,11 @@ class MainController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeNewEmp(Request $request)
     {
-        //
+        $data = $request -> validate();
+        $newEmp = Employee::create($data);
+        return redirect() -> route('emp.index');
     }
 
     /**
