@@ -9,6 +9,7 @@
     <li> 
       {{ $emp-> name }} 
       {{ $emp -> lastname }} : 
+      (<a href=" {{ route('emp.show', $emp -> id) }} ">DETTAGLI</a>)
       (<a href=" {{ route('emp.delete', $emp -> id) }} ">LICENZIA</a>)
       ( <a href="{{ route('emp.edit', $emp -> id) }}">MODIFICA</a> )
       <ul>
@@ -17,7 +18,6 @@
             <li>
               {{ $task -> title }} 
               ( <a href=" {{ route('emp.task.destroy', [$emp -> id, $task ->id] ) }} ">ELIMINA</a> )
-              ( <a href="">MODIFICA</a> )
             </li>
             <br>
         @endforeach
