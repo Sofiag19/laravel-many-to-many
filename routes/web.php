@@ -16,3 +16,6 @@ Route::post('/update/{id}', 'MainController@updateEmp')-> name('emp.update');
 Route::get('/destroy/{ide}/destroy/{idt}' , 'MainController@destroyBond')-> name('emp.task.destroy');
 
 Route::get('/show/{id}', 'MainController@showEmp')-> name('emp.show');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
