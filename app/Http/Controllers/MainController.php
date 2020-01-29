@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Task;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -41,14 +43,19 @@ class MainController extends Controller
     {
         $data = $request->all();
         //dd($data);
-        $newEmp = Employee::create($data);
+        //$newEmp = Employee::create($data);
+
+        $user = Auth::user();
+        $emp = Employee::make($data);
+        $emp -> user()-> associate($user);
+        $emp -> save();
 
         if (isset($data['tasks'])) {
             $tasks = Task::find($data['tasks']);
-            $newEmp->tasks()->sync($tasks);
+            $emp->tasks()->sync($tasks);
         } else {
             $tasks = [];
-            $newEmp->tasks()->sync($tasks);
+            $emp->tasks()->sync($tasks);
         }
         //$tasks = Task::find($data['tasks']);
         //dd($tasks);

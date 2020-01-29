@@ -22,6 +22,7 @@
             <br>
         @endforeach
       </ul>
+      Added by {{ $emp -> user -> name }}
     </li>  
     <br> <br>
   @endforeach
