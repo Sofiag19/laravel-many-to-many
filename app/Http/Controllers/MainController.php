@@ -43,9 +43,16 @@ class MainController extends Controller
         //dd($data);
         $newEmp = Employee::create($data);
 
-        $tasks = Task::find($data['tasks']);
+        if (isset($data['tasks'])) {
+            $tasks = Task::find($data['tasks']);
+            $newEmp->tasks()->sync($tasks);
+        } else {
+            $tasks = [];
+            $newEmp->tasks()->sync($tasks);
+        }
+        //$tasks = Task::find($data['tasks']);
         //dd($tasks);
-        $newEmp->tasks()->attach($tasks);
+        //$newEmp->tasks()->attach($tasks);
         //dd($newEmp);
 
         return redirect() -> route('emp.index');
@@ -90,8 +97,13 @@ class MainController extends Controller
         $upEmp= Employee::findOrFail($id);
         $upEmp -> update($data);
 
-        $tasks = Task::find($data['tasks']);
-        $upEmp -> tasks() -> sync($tasks);
+        if(isset($data['tasks'])) {
+            $tasks = Task::find($data['tasks']);
+            $upEmp -> tasks() -> sync($tasks);
+        } else {
+            $tasks = [];
+            $upEmp->tasks()->sync($tasks);
+        }
 
         return redirect()-> route('emp.index');
     }
