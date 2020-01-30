@@ -25,6 +25,11 @@ class AddForeignKey extends Migration
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id', 'emp_user_id')->references('id')->on('users');
         });
+
+        Schema::table('infousers', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreign('user_id', 'info_user_id')->references('id')->on('users');
+        });
     }
 
     /**
@@ -45,6 +50,11 @@ class AddForeignKey extends Migration
         Schema::table('employees', function (Blueprint $table) {
             $table->dropForeign('emp_user_id');
             $table->dropColumn('user_id');
+        });
+
+        Schema::table('infousers', function (Blueprint $table) {
+            $table->dropForeign('info_user_id');
+            $table->dropColumn('user_id');        
         });
     }
 }

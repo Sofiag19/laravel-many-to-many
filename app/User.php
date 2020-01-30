@@ -37,7 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function emp() {
-        return $this -> hasOne(Employee::class);
+    public function emps() {
+        return $this -> belongsToMany(Employee::class);
+    }
+
+    public function infouser(){
+        return $this -> hasOne(Infouser::class);
     }
 }
