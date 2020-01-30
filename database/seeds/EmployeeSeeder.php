@@ -23,7 +23,7 @@ class EmployeeSeeder extends Seeder
                     $emp -> user() -> associate($user);
                     $emp -> save();
 
-                    $tasks = Task::inRandomOrder()->take(3)->get();
+                    $tasks = Task::inRandomOrder()->take(rand(0,4))->get();
                     $emp ->tasks()->attach($tasks);
                  });
     }
